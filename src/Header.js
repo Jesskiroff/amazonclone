@@ -1,19 +1,23 @@
 import React from 'react';
 import './Header.css';
+import SearchIcon from '@mui/icons-material/Search';
+
 
 function Header() {
   return (
     <div className="header">
       <img
-        className="header logo"
+        className="header__logo"
         src="https://www.hatchwise.com/wp-content/uploads/2022/05/amazon-logo-600x400.png.webp"
         alt="Amazon Logo"
       />
 
-      <div className="header">
-        <input className="header__searchInput" 
+      <div className="header__search">
+        <input 
+        className="header__searchInput" 
         type="text" />
-        {/* Logo */}
+        <SearchIcon 
+        className="header__searchIcon"/>
       </div>
       <div className="header__nav">
         <div className='header__option'>
