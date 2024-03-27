@@ -6,11 +6,13 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 function Header() {
   return (
     <div className="header">
-      <img
+      <Link to="/">
+        <img
         className="header__logo"
         src="https://www.hatchwise.com/wp-content/uploads/2022/05/amazon-logo-600x400.png.webp"
         alt="Amazon Logo"
-      />
+        />
+      </Link>
 
       <div className="header__search">
         <input className="header__searchInput" type="text" />
@@ -33,12 +35,15 @@ function Header() {
           <span className="header__optionLineTwo">Prime</span>
         </div>
 
-        <div className="header__optionBasket">
-          <ShoppingBasketIcon />
-          <span
+        <Link to="/checkout">
+          <div className="header__optionBasket">
+            <ShoppingBasketIcon />
+            <span
             className="header__optionLineTwo
             header__basketCount">0</span>
-        </div>
+          </div>
+        </Link>
+       
       </div>
     </div>
   );
