@@ -2,10 +2,10 @@ import React from 'react';
 import './App.css';
 import Header from './Header';
 import Home from './Home';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Checkout from "./Checkout";
+import Login from './Login'
 
-<<<<<<< HEAD
 function App(){
     return(
         //BEM
@@ -13,30 +13,15 @@ function App(){
          <div className='app'>
             <Header />
             
-            <Switch>
-                <Route path="/login">
-                    <Login />
-                </Route>
-                <Route path="/checkout">
-                    <Checkout />
-                </Route>
-                <Route path="/">
-                    <Home/>
-                </Route>
-            </Switch>    
+            <Routes>
+                
+                <Route path="/checkout" element={<Checkout/>}/>
+                <Route path="/login" element= {<Login/>}/>
+                <Route path="/" element={<Home/>}/>
+            </Routes>    
         </div>
         </Router>
     );
-=======
-function App() {
-  return (
-    //BEM
-    <div className="app">
-      <Header />
-      <Home />
-    </div>
-  );
->>>>>>> 7a16c04ab93f4cbf85e23e58db6e4edbff628692
 }
 
 export default App;
