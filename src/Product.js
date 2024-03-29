@@ -1,8 +1,7 @@
-import React from "react";
-import "./Product.css";
+import React from 'react';
+import './Product.css';
 
 function Product({ id, title, image, price, rating }) {
- 
   return (
     <div className="product">
       <div className="product__info">
@@ -15,9 +14,7 @@ function Product({ id, title, image, price, rating }) {
           {Array(rating)
             .fill()
             .map((_, i) => (
-              
-              <span role="img" aria-label="🌟"/>
-              
+              <span role="img" aria-label="🌟" />
             ))}
         </div>
       </div>
