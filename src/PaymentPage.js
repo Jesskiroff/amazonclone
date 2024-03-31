@@ -9,7 +9,7 @@ function PaymentPage() {
 
   // Dummy submit handler
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevents form from refreshing the page
+    e.preventDefault(); 
 
     // Here you would typically integrate with a payment processor
     console.log('Payment Info:', { cardNumber, expiryDate, cvv, nameOnCard });
