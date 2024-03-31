@@ -105,6 +105,34 @@ function Payment() {
         ))}
       </div>
     </div>
+    <div className='payment__section'>
+      <div className='payment__title'>
+        <h3>Payment Method</h3>
+      </div>
+
+      <div className='payment__details'></div>
+      <form onSubmit={handleSubmit}>
+        <CardElement onChange={handleChange}/>
+        <div className='payment__priceContainer'>
+          <CurrencyFormat renderText={(value) =>(
+            <>
+            <h3>Order Total: {value}</h3>
+            </>
+          )}
+          decimalScale={2}
+          value={getBasketTotal(basket)}
+          displayType={"text"}
+          thousandSeparator={true}
+          prefix={"$"}
+          />
+          <button disabled={processing || disabled || succeeded}>
+            <span>{processing ? <p>Processing</p> : "Buy now"}</span>
+          </button>
+        </div>
+        {error && <div>{error}</div>}
+      </form>
+
+    </div>
   </div>;
 }
 
