@@ -1,52 +1,71 @@
-import React, {useState} from 'react';
-import './Login.css'
-import {Link} from "react-router-dom";
+import React, { useState } from 'react';
+import './Login.css';
+import { Link } from 'react-router-dom';
+import { auth } from './firebase';
 
 function Login() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-    const signIn = e => {
-        e.preventDefault()
-    }
+  const signIn = (e) => {
+    e.preventDefault();
+  };
 
-    const register = e => {
-        e.preventDefault();
-    }
+  const register = (e) => {
+    e.preventDefault();
 
-    return (
-        <div className='login'>
-            <Link to= '/'>
-            <img 
-                className="login_logo"
-                alt="amazon img" src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png' 
-            />
-            </Link>
+    auth.createUserWithEmailAndPassword(email, password).then((auth) => {
+      //A new user was successfully created w email and password
+      console.log(auth);
+    })
+    .catch(error=>(error.message))
+  }
 
-            <div className='login_container'>
-                <h1>Sign-in</h1>
+  return (
+    <div className="login">
+      <Link to="/">
+        <img
+          className="login_logo"
+          alt="amazon img"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png"
+        />
+      </Link>
 
-                <form>
-                    <h5>Email</h5>
-                    <input type='text' value={email} onChange= {e => setEmail(e.target.value)}/>
+      <div className="login_container">
+        <h1>Sign-in</h1>
 
-                    <h5>Password</h5>
-                    <input type='password' value={password} onChange= {e => setPassword(e.target.value)}/>
+        <form>
+          <h5>Email</h5>
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-                    <button type='submit' onClick={signIn}
-                    className='login_signInButton'>Sign In</button>
-                </form>
+          <h5>Password</h5>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-                <p>
-                    By signing-in you agree to AMAZON FAKE CLONE Conditions of Use & Sale. Please see our Privacy Notice, our Cookies Notice and our Intrest-Based Ads Notice.
-                </p>
+          <button type="submit" onClick={signIn} className="login_signInButton">
+            Sign In
+          </button>
+        </form>
 
-                <button  onClick={register}
-                className='login_registerButton'>Create your Amazon Account</button>
-            </div>
-        </div>
-    )
+        <p>
+          By signing-in you agree to AMAZON FAKE CLONE Conditions of Use & Sale.
+          Please see our Privacy Notice, our Cookies Notice and our
+          Intrest-Based Ads Notice.
+        </p>
+
+        <button onClick={register} className="login_registerButton">
+          Create your Amazon Account
+        </button>
+      </div>
+    </div>
+  );
 }
 
-export default Login
-
+export default Login;
