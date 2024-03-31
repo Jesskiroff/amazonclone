@@ -6,7 +6,7 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Checkout from "./Checkout";
 import Login from './Login';
 import Orders from './Orders';
-import Subtotal from './Subtotal'
+
 function App(){
     return(
         //BEM
